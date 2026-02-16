@@ -7,10 +7,6 @@ import org.scalajs.dom
 import com.raquo.laminar.api.L.{*, given}
 import cl.mixin.uuid.generator.UUIDGeneratorView
 
-// import javascriptLogo from "/javascript.svg"
-@js.native @JSImport("/javascript.svg", JSImport.Default)
-val javascriptLogo: String = js.native
-
 @JSImport(
   "@awesome.me/webawesome/dist/styles/webawesome.css",
   JSImport.Namespace
