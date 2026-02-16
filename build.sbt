@@ -27,12 +27,12 @@ lazy val root = project
         )
     },
 
-    /* Depend on the scalajs-dom library.
-     * It provides static types for the browser DOM APIs.
-     */
-    libraryDependencies += "org.scala-js" %%% "scalajs-dom" % Dependencies.ScalaJsDom,
-    // Depend on Laminar
-    libraryDependencies += "com.raquo" %%% "laminar" % Dependencies.Laminar
+    libraryDependencies ++= List(
+      "org.scala-js" %%% "scalajs-dom" % Dependencies.ScalaJsDom,
+      "com.raquo" %%% "laminar" % Dependencies.Laminar,
+      "io.github.nguyenyou" %%% "webawesome-laminar" % Dependencies.WebAwesomeLaminar,
+      "org.scala-js" %%% "scalajs-java-securerandom" % Dependencies.ScalaJsJavaSecurRandom cross (CrossVersion.for3Use2_13)
+    )
   )
   .settings(commonSettings)
   .settings(noPublish)
