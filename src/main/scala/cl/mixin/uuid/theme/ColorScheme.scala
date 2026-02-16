@@ -52,22 +52,26 @@ object ColorScheme {
   def apply(): HtmlElement = {
     updateTheme()
     val checked = Var(getMode() == ThemeMode.Dark)
-
-    Switch(
-      _.idAttr := "theme-switch",
-      _.checked <-- checked,
-      _.onInput.mapToChecked --> { value =>
-        {
-          checked.set(value)
-          if (value) {
-            setMode(ThemeMode.Dark)
-          } else {
-            setMode(ThemeMode.Light)
+    div(
+      className := "theme-switch-container",
+      Icon(_.name := "sun")(),
+      Switch(
+        _.name := "theme-input",
+        _.checked <-- checked,
+        _.onInput.mapToChecked --> { value =>
+          {
+            checked.set(value)
+            if (value) {
+              setMode(ThemeMode.Dark)
+            } else {
+              setMode(ThemeMode.Light)
+            }
+            updateTheme()
           }
-          updateTheme()
         }
-      }
-    )()
+      )(),
+      Icon(_.name := "moon")()
+    )
   }
 
 }
